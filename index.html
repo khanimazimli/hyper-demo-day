@@ -1094,6 +1094,29 @@
     #hipersen-live .hl-num-lbl{font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-mute)}
     #hipersen-live .hl-num-card.big .hl-num-lbl{font-size:12px;color:#166534}
     #hipersen-live .hl-num-note{text-align:center;margin-top:16px;font-size:12px;color:var(--ink-mute);font-weight:600}
+    /* scenarios strip */
+    #hipersen-live .hl-scen{max-width:1100px;margin:10px auto 0}
+    #hipersen-live .hl-scen-title{
+      display:flex;align-items:center;gap:16px;margin-bottom:16px;
+      font-size:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--ink-2);
+    }
+    #hipersen-live .hl-scen-title::before,#hipersen-live .hl-scen-title::after{content:"";flex:1;height:1px;background:var(--line)}
+    #hipersen-live .hl-scen-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    #hipersen-live .hl-scen-card{
+      position:relative;padding:32px 20px 28px;border-radius:18px;background:#fff;
+      border:1px solid var(--line);box-shadow:var(--shadow);text-align:center;
+      transition:transform .25s ease,box-shadow .25s ease;
+    }
+    #hipersen-live .hl-scen-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+    #hipersen-live .hl-scen-card .hl-num-val{font-size:clamp(40px,4vw,58px);margin-bottom:12px}
+    #hipersen-live .hl-scen-card .hl-num-lbl{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px}
+    #hipersen-live .hl-scen-card .st{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+    #hipersen-live .hl-scen-card.launched .hl-num-val{color:#15803D}
+    #hipersen-live .hl-scen-card.launched .st{background:#16A34A;box-shadow:0 0 0 3px rgba(22,163,74,.15)}
+    #hipersen-live .hl-scen-card.waiting .hl-num-val{color:#B45309}
+    #hipersen-live .hl-scen-card.waiting .st{background:#D97706;box-shadow:0 0 0 3px rgba(217,119,6,.15)}
+    #hipersen-live .hl-scen-card.inprogress .hl-num-val{color:#1D4ED8}
+    #hipersen-live .hl-scen-card.inprogress .st{background:#3463FF;box-shadow:0 0 0 3px rgba(52,99,255,.15)}
 
     /* lightbox */
     .hl-lightbox{position:fixed;inset:0;z-index:130;background:rgba(15,18,53,.78);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;cursor:zoom-out}
@@ -1205,7 +1228,38 @@
         <div class="hl-num-val" data-target="277843">0</div><div class="hl-num-lbl">İnvest Amount</div>
       </div>
     </div>
-    <div class="hl-num-note">Canlı biznes göstəriciləri · HiperSən kampaniyalarının nəticələri</div>
+    <div class="hl-scen">
+      <span class="hl-scen-title">Scenarios</span>
+      <div class="hl-scen-row">
+        <div class="hl-scen-card launched"><div class="hl-num-val" data-target="33">0</div><div class="hl-num-lbl"><span class="st"></span>Developed Scenarios · Launched</div></div>
+        <div class="hl-scen-card waiting"><div class="hl-num-val" data-target="11">0</div><div class="hl-num-lbl"><span class="st"></span>Waiting</div></div>
+        <div class="hl-scen-card inprogress"><div class="hl-num-val" data-target="5">0</div><div class="hl-num-lbl"><span class="st"></span>In Progress</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="section-head">
+    <span class="section-eyebrow">The governance flow</span>
+    <h2>Every campaign moves through <span class="grad">5 governed stages</span>.</h2>
+    <p>From the first signal to the last result. Each stage has one owner - supporting squads contribute on the side. Click any stage to explore.</p>
+  </div>
+  <div class="stage-flow" id="stageFlow"></div>
+</section>
+
+<!-- ===== LANES / RACI ===== -->
+<section class="section" id="raci">
+  <div class="section-head">
+    <span class="section-eyebrow">Squad involvement</span>
+    <h2>Who does <span class="grad">what</span>, at <span class="grad">each stage</span>.</h2>
+    <p>Filled cell = owner. Outlined cell = support. Dashed cell = not involved. Click any cell for detail.</p>
+  </div>
+  <div class="lanes" id="lanes"></div>
+  <div class="lanes-foot">
+    <span class="item"><span class="ow"></span> Owner - drives the stage</span>
+    <span class="item"><span class="sp"></span> Support - contributes</span>
+    <span class="item"><span class="nn"></span> Not involved</span>
   </div>
 </section>
 
@@ -1967,30 +2021,6 @@
       <span class="counter" id="hpeNavCounter">01 / 07</span>
       <button class="hpe-nav-btn" id="hpeNavNext">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
-  </div>
-</section>
-
-<section class="section" id="flow">
-  <div class="section-head">
-    <span class="section-eyebrow">The governance flow</span>
-    <h2>Every campaign moves through <span class="grad">5 governed stages</span>.</h2>
-    <p>From the first signal to the last result. Each stage has one owner - supporting squads contribute on the side. Click any stage to explore.</p>
-  </div>
-  <div class="stage-flow" id="stageFlow"></div>
-</section>
-
-<!-- ===== LANES / RACI ===== -->
-<section class="section" id="raci">
-  <div class="section-head">
-    <span class="section-eyebrow">Squad involvement</span>
-    <h2>Who does <span class="grad">what</span>, at <span class="grad">each stage</span>.</h2>
-    <p>Filled cell = owner. Outlined cell = support. Dashed cell = not involved. Click any cell for detail.</p>
-  </div>
-  <div class="lanes" id="lanes"></div>
-  <div class="lanes-foot">
-    <span class="item"><span class="ow"></span> Owner - drives the stage</span>
-    <span class="item"><span class="sp"></span> Support - contributes</span>
-    <span class="item"><span class="nn"></span> Not involved</span>
   </div>
 </section>
 
